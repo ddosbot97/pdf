@@ -1,0 +1,76 @@
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Grid3X3, Scissors, FileDown, RefreshCcw } from "lucide-react";
+
+const tools = [
+  {
+    icon: <Grid3X3 className="w-6 h-6 text-blue-600" />, 
+    title: "Merge PDF",
+    desc: "Combine multiple PDF files into one.",
+  },
+  {
+    icon: <Scissors className="w-6 h-6 text-red-600" />,
+    title: "Split PDF",
+    desc: "Split PDF pages into separate files.",
+  },
+  {
+    icon: <FileDown className="w-6 h-6 text-green-600" />,
+    title: "Compress PDF",
+    desc: "Reduce the size of your PDF file.",
+  },
+  {
+    icon: <RefreshCcw className="w-6 h-6 text-purple-600" />,
+    title: "Convert PDF",
+    desc: "Convert PDF to/from Word, JPG, etc.",
+  },
+];
+
+export default function HomePage() {
+  return (
+    <div className="min-h-screen bg-gray-50 text-gray-800">
+      {/* Header */}
+      <header className="flex items-center justify-between px-6 py-4 shadow bg-white">
+        <h1 className="text-2xl font-bold">PDFGenie</h1>
+        <nav className="space-x-4">
+          <a href="#" className="hover:text-blue-600">Home</a>
+          <a href="#" className="hover:text-blue-600">About</a>
+          <a href="#" className="hover:text-blue-600">Contact</a>
+          <Button>Login</Button>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section className="text-center py-16 px-6 bg-gradient-to-r from-blue-100 to-purple-100">
+        <h2 className="text-4xl font-bold mb-4">All Your PDF Tools in One Place</h2>
+        <p className="mb-6 text-lg">Merge, Split, Convert, Compress & more — all for free.</p>
+        <div className="space-x-4">
+          <Button className="bg-blue-600 text-white">Start Now</Button>
+          <Button variant="outline">Explore Tools</Button>
+        </div>
+      </section>
+
+      {/* Tools Grid */}
+      <section className="py-12 px-6">
+        <h3 className="text-2xl font-semibold mb-6 text-center">Popular Tools</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {tools.map((tool, idx) => (
+            <Card key={idx} className="hover:shadow-lg transition">
+              <CardContent className="p-4 text-center">
+                <div className="mb-2 flex justify-center">{tool.icon}</div>
+                <h4 className="font-semibold text-lg mb-1">{tool.title}</h4>
+                <p className="text-sm text-gray-600">{tool.desc}</p>
+                <Button className="mt-4 w-full">Use Tool</Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="text-center py-6 text-sm text-gray-500 bg-white border-t">
+        © 2025 PDFGenie. All rights reserved.
+      </footer>
+    </div>
+  );
+}
